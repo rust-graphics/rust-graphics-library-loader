@@ -1,0 +1,19 @@
+[package]
+name = "rust_graphics_library_loader"
+version = "0.1.0"
+authors = ["Hossein Noroozpour <hossein.noroozpour@gmail.com>"]
+description = "A simple, small and minimal library loader."
+repository = "https://github.com/rust-graphics/rust-graphics-library-loader"
+license = "MIT"
+readme = "README.md"
+keywords = ["ffi", "dll", "shared-library"]
+categories = ["ffi"]
+
+[dependencies]
+rust_graphics_log = "0.1"
+
+[target.'cfg(not(target_os = "windows"))'.dependencies]
+libc = "*"
+
+[target.'cfg(target_os = "windows")'.dependencies]
+winapi = { version = "*", features = ["libloaderapi", "minwindef"] }
