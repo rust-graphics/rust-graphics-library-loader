@@ -1,6 +1,6 @@
 [package]
 name = "rust_graphics_library_loader"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Hossein Noroozpour <hossein.noroozpour@gmail.com>"]
 description = "A simple, small and minimal library loader."
 repository = "https://github.com/rust-graphics/rust-graphics-library-loader"
