@@ -13,7 +13,7 @@ categories = ["ffi"]
 rust_graphics_log = "0.1"
 
 [target.'cfg(not(target_os = "windows"))'.dependencies]
-libc = "*"
+libc = "0.2"
 
 [target.'cfg(target_os = "windows")'.dependencies]
-winapi = { version = "*", features = ["libloaderapi", "minwindef"] }
+winapi = { version = "0.3", features = ["libloaderapi", "minwindef"] }
