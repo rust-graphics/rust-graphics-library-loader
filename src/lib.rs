@@ -8,7 +8,7 @@ use rust_graphics_log::log_f;
 #[cfg(not(target_os = "windows"))]
 extern crate libc;
 
-#[derive(Debug)]
+#[cfg_attr(feature="debug_derive", derive(Debug))]
 pub struct Linker {
     #[cfg(not(target_os = "windows"))]
     link: *mut libc::c_void,
