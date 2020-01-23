@@ -9,10 +9,11 @@ fn main() {
     let library_name = "/System/Library/Frameworks/OpenGL.framework/Libraries/libGL.dylib";
 
     let linker = loader::Linker::new(library_name).expect(&format!("Can not find {} library.", library_name));
-    let bind_vertex_array: Option<extern "C" fn(u32)> = linker.get_function("glBindVertexArray");
+    let fun_name = "glBindVertexArray";
+    let bind_vertex_array: Option<extern "C" fn(u32)> = linker.get_function(fun_name);
     if bind_vertex_array.is_some() {
-        println!("bind_vertex_array found");
+        println!("{} found", fun_name);
     } else {
-        println!("bind_vertex_array not found");
+        println!("{} not found", fun_name);
     }
 }
