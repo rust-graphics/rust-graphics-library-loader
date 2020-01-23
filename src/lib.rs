@@ -33,8 +33,8 @@ impl Linker {
 
     #[cfg(target_os = "windows")]
     pub fn new(library_name: &str) -> Option<Self> {
-        use super::super::core::string::string_to_cwstring;
-        let cs = string_to_cwstring(library_name);
+        use std::iter::once;
+        let cs: Vec<u16> = library_name.encode_utf16().chain(once(0)).collect();
         let link = unsafe { winapi::um::libloaderapi::LoadLibraryW(cs.as_ptr()) };
         if link == null_mut() {
             return None;
@@ -80,9 +80,9 @@ impl Linker {
 impl Drop for Linker {
     #[cfg(target_os = "windows")]
     fn drop(&mut self) {
-        use winapi::shared::minwindef::FALSE;
-        use winapi::um::libloaderapi::FreeLibrary;
-        if FALSE == unsafe { FreeLibrary(self.link) } {
+        if winapi::shared::minwindef::FALSE
+            == unsafe { winapi::um::libloaderapi::FreeLibrary(self.link) }
+        {
             log_f!("Can not free library '{}'.", self.name);
         }
     }
