@@ -1,3 +1,5 @@
+#![feature(thread_id_value)]
+
 use std::ffi::{c_void, CString};
 use std::mem::transmute_copy;
 use std::ptr::null_mut;
@@ -8,7 +10,7 @@ use rust_graphics_log::log_f;
 #[cfg(not(target_os = "windows"))]
 extern crate libc;
 
-#[cfg_attr(feature="debug_derive", derive(Debug))]
+#[cfg_attr(feature = "debug_derive", derive(Debug))]
 pub struct Linker {
     #[cfg(not(target_os = "windows"))]
     link: *mut libc::c_void,
