@@ -19,7 +19,7 @@ libc = "*"
 winapi = { version = "0.3", features = ["libloaderapi", "minwindef"] }
 
 [features]
-debug_derive = []
+debug-derive = []
 
 [profile.release]
 lto = true
